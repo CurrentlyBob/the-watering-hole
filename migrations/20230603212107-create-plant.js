@@ -10,31 +10,38 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       plantApiId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       nickname: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       scientific: {
-        type: Sequelize.ARRAY
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        allowNull: false
       },
       watering: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
       },
       sunlight: {
-        type: Sequelize.ARRAY
+        type: Sequelize.ARRAY(Sequelize.STRING),
+        allowNull: false
       },
       image: {
         type: Sequelize.JSONB
       },
       plantAmount: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false
       },
       notes: {
         type: Sequelize.STRING
       },
       isFertilized: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull: false
       },
       plantLocation: {
         type: Sequelize.STRING
