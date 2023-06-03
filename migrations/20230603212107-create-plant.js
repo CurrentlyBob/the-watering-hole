@@ -1,62 +1,71 @@
-'use strict';
+"use strict";
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Plants', {
+    await queryInterface.createTable("Plants", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       plantApiId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       nickname: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       scientific: {
         type: Sequelize.ARRAY(Sequelize.STRING),
-        allowNull: false
+        allowNull: false,
       },
       watering: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false,
       },
       sunlight: {
         type: Sequelize.ARRAY(Sequelize.STRING),
-        allowNull: false
+        allowNull: false,
       },
       image: {
-        type: Sequelize.JSONB
+        type: Sequelize.JSONB,
       },
       plantAmount: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
       },
       notes: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       isFertilized: {
         type: Sequelize.BOOLEAN,
-        allowNull: false
+        allowNull: false,
       },
       plantLocation: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+      },
+      profileId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onDelete: "CASCADE",
+        references: {
+          model: "Profiles",
+          key: "id",
+        },
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Plants');
-  }
+    await queryInterface.dropTable("Plants");
+  },
 };
