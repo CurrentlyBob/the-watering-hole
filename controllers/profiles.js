@@ -16,10 +16,7 @@ async function addPhoto(req, res) {
     const imageFile = req.files.photo.path
     const profile = await Profile.findByPk(req.params.id)
 
-    const image = await cloudinary.uploader.upload(
-      imageFile, 
-      { tags: `${req.user.email}` }
-    )
+    const image = await cloudinary.uploader.upload(imageFile, { tags: `${req.user.email}` })
     profile.photo = image.url
 
     await profile.save()

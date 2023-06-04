@@ -20,38 +20,40 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
 
-  User.init({
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: {
-        msg: 'This email is already taken',
+  User.init(
+    {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
       },
-      validate: {
-        notNull: {
-          msg: 'An email is required',
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: {
+          msg: 'This email is already taken',
         },
-        isEmail: {
-          msg: 'Please provide an email address',
+        validate: {
+          notNull: {
+            msg: 'An email is required',
+          },
+          isEmail: {
+            msg: 'Please provide an email address',
+          },
+        },
+      },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        get() {
+          return () => this.getDataValue('password')
         },
       },
     },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      get() {
-        return () => this.getDataValue('password')
-      },
+    {
+      sequelize,
+      modelName: 'User',
     },
-  },
-  {
-    sequelize,
-    modelName: 'User',
-  })
+  )
 
   User.beforeSave(async (user, options) => {
     if (!user.changed('password')) return

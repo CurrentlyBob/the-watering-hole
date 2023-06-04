@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www.js"
+    "start": "node ./bin/www.js",
+    "format:fix": "prettier --write ."
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
@@ -15,6 +16,7 @@
     "jsonwebtoken": "^9.0.0",
     "morgan": "^1.10.0",
     "pg": "^8.11.0",
+    "prettier": "^2.8.8",
     "sequelize": "^6.31.1"
   }
 }

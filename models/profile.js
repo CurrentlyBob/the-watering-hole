@@ -17,25 +17,27 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
 
-  Profile.init({
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    photo: DataTypes.STRING,
-    userId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      onDelete: 'CASCADE',
-      references: {
-        model: 'Users',
-        key: 'id',
+  Profile.init(
+    {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      photo: DataTypes.STRING,
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
       },
     },
-  },
-  {
-    sequelize,
-    modelName: 'Profile',
-  })
+    {
+      sequelize,
+      modelName: 'Profile',
+    },
+  )
   return Profile
 }
