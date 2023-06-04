@@ -8,7 +8,7 @@ const formData = require('express-form-data')
 // import routes
 const profilesRouter = require('./routes/profiles.js')
 const authRouter = require('./routes/auth.js')
-
+const plantsRouter = require('./routes/plants.js')
 // create the express app
 const app = express()
 
@@ -21,7 +21,7 @@ app.use(formData.parse())
 // mount imported routes
 app.use('/api/profiles', profilesRouter)
 app.use('/api/auth', authRouter)
-
+app.use('/api/plants', plantsRouter)
 // handle 404 errors
 app.use(function (req, res, next) {
   res.status(404).json({ err: 'Not found' })
