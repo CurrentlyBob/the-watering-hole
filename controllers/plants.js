@@ -10,7 +10,12 @@ async function create(req, res) {
 }
 async function index(req, res) {
   try {
-    const plants = await Plant.findAll()
+    const { id: userId} = req.user
+    const plants = await Plant.findAll({
+      where: {
+        profileId: userId - 1
+      }
+    })
     res.status(200).json(plants)
   } catch (error) {
     res.status(500).json(error)
