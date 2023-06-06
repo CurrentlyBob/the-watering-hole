@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const plantsCtrl = require('../controllers/plants.js')
+const plantsCtrl = require('../controllers/garden.js')
 const middleware = require('../middleware/auth.js')
 
 const { decodeUserFromToken, checkAuth } = middleware
