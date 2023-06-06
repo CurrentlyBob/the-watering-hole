@@ -13,11 +13,11 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-      nickname: {
+      common_name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      scientific: {
+      scientific_name: {
         type: Sequelize.ARRAY(Sequelize.STRING),
         allowNull: false,
       },
@@ -29,8 +29,9 @@ module.exports = {
         type: Sequelize.ARRAY(Sequelize.STRING),
         allowNull: false,
       },
-      image: {
+      default_image: {
         type: Sequelize.JSONB,
+        allowNull: false,
       },
       plantAmount: {
         type: Sequelize.INTEGER,
@@ -38,13 +39,16 @@ module.exports = {
       },
       notes: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       isFertilized: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
+        defaultValue: false,
       },
       plantLocation: {
         type: Sequelize.STRING,
+        allowNull: true,
       },
       profileId: {
         type: Sequelize.INTEGER,

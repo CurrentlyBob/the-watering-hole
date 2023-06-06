@@ -13,16 +13,22 @@ module.exports = (sequelize, DataTypes) => {
   }
   Plant.init(
     {
-      plantApiId: {
+      id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         unique: true,
+        primaryKey: true,
+        autoIncrement: true,
       },
-      nickname: {
+      plantApiId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      common_name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      scientific: {
+      scientific_name: {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
@@ -34,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: false,
       },
-      image: {
+      default_image: {
         type: DataTypes.JSONB,
         allowNull: false,
       },

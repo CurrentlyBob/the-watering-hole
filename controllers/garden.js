@@ -1,4 +1,4 @@
-const { Plant } = require('../models')
+const { Plant, Profile, User } = require('../models')
 
 async function create(req, res) {
   try {
@@ -10,15 +10,22 @@ async function create(req, res) {
 }
 async function index(req, res) {
   try {
-    const { id: userId} = req.user
+    const { id: userId } = req.user
+    const user = await User.findByPk(userId, { include: { model: Profile, as: 'profile' } })
+
+    if(!user) {
+      throw new Error('User Not Found')
+    }
+    const profileId = user.profile.id
     const plants = await Plant.findAll({
       where: {
-        profileId: userId - 1
-      }
+        profileId: profileId,
+      },
+      include: Profile,
     })
     res.status(200).json(plants)
   } catch (error) {
-    res.status(500).json(error)
+    res.status(500).json({error: 'Internal Server error'})
   }
 }
 
