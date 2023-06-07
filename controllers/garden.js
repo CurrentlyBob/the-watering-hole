@@ -6,6 +6,7 @@ async function create(req, res) {
     res.status(200).json(newPlant)
   } catch (error) {
     res.status(500).json(error)
+    console.log(error)
   }
 }
 async function index(req, res) {
@@ -13,7 +14,7 @@ async function index(req, res) {
     const { id: userId } = req.user
     const user = await User.findByPk(userId, { include: { model: Profile, as: 'profile' } })
 
-    if(!user) {
+    if (!user) {
       throw new Error('User Not Found')
     }
     const profileId = user.profile.id
@@ -25,7 +26,7 @@ async function index(req, res) {
     })
     res.status(200).json(plants)
   } catch (error) {
-    res.status(500).json({error: 'Internal Server error'})
+    res.status(500).json({ error: 'Internal Server error' })
   }
 }
 

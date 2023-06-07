@@ -41,11 +41,6 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
-      isFertilized: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false,
-        defaultValue: false,
-      },
       plantLocation: {
         type: Sequelize.STRING,
         allowNull: true,
