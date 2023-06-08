@@ -18,7 +18,7 @@ module.exports = {
         allowNull: false,
       },
       scientific_name: {
-        type: Sequelize.ARRAY(Sequelize.STRING),
+        type: Sequelize.STRING,
         allowNull: false,
       },
       watering: {
@@ -26,7 +26,7 @@ module.exports = {
         allowNull: false,
       },
       sunlight: {
-        type: Sequelize.ARRAY(Sequelize.STRING),
+        type: Sequelize.STRING,
         allowNull: false,
       },
       default_image: {

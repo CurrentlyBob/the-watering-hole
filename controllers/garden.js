@@ -33,15 +33,19 @@ async function index(req, res) {
 async function update(req, res) {
   try {
     const plantId = req.params.id
-    const [updatedCount, updatedPlants] = await Plant.update(req.body, {
+    const updatedValues = req.body
+    console.log(updatedValues)
+    const [updatedCount, updatedPlants] = await Plant.update(updatedValues, {
       where: { id: plantId },
       returning: true,
     })
+  
     if (updatedCount === 0) {
       return res.status(404).json({ error: 'Plant Not Found' })
     }
     res.status(200).json(updatedPlants[0])
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: error.message })
   }
 }
