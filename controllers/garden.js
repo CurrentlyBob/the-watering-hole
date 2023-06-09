@@ -39,7 +39,7 @@ async function update(req, res) {
       where: { id: plantId },
       returning: true,
     })
-  
+
     if (updatedCount === 0) {
       return res.status(404).json({ error: 'Plant Not Found' })
     }
